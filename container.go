@@ -1,8 +1,8 @@
 package middle
 import (
 	"fmt"
-	"github.com/orivil/service"
-	"github.com/orivil/sorter"
+	"gopkg.in/orivil/service.v0"
+	"gopkg.in/orivil/sorter.v0"
 )
 
 type Container struct {

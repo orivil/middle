@@ -1,7 +1,7 @@
 package middle_test
 import (
 	"fmt"
-	"github.com/orivil/middle"
+	"gopkg.in/orivil/middle.v0"
 )
 
 //simulated actions
