@@ -1,3 +1,9 @@
+// Copyright 2016 orivil Authors. All rights reserved.
+// Use of this source code is governed by a MIT-style
+// license that can be found in the LICENSE file.
+
+// Package middle provide a middleware container for store the middlewares and provide a
+// names bag for config the middlewares.
 package middle
 import (
 	"fmt"
@@ -27,7 +33,7 @@ func NewContainer(bag *Bag, public *service.Container) *Container {
 //
 // name: the middleware name
 // provider: could be a service provider, or just a function
-// priority: this parameter is not necessary, default priority = 0, and highest
+// priority: this parameter is not necessary, default priority = 0, and biger
 // priority comes out first
 func (c *Container) Add(name string, provider interface{}, priority... int) {
 	_priority := 0
