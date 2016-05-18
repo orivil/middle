@@ -77,7 +77,7 @@ func GetMiddlesMsg(c *Container, actions map[string]map[string]map[string]bool) 
 			}
 		}
 	}
-	space := "                                                                    "
+	space := "                                                                                                                               "
 	msg = make([]string, len(mids))
 	for index, mid := range mids {
 		mid += space[0: midMaxLen - len(mid)]
