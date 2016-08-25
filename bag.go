@@ -1,7 +1,10 @@
 package middle
 import (
 	"log"
+	"fmt"
 )
+
+var _ = fmt.Println
 
 // the interface for middleware container, to check if middleware exist
 type MiddleChecker interface {
@@ -92,7 +95,7 @@ func (b *Bag) deleteActions(bundle string, controller string, actions []string) 
 func (b *Bag) checkBundles(bundles []string) {
 	for _, bundle := range bundles {
 		if _, ok := b.actions[bundle]; !ok {
-			log.Fatalf("bundle %s: func SetMiddle got error, bundle %s not exist\n", bundle, bundle)
+			log.Fatalf("set bundle middleware got error: bundle '%s' not exist\n", bundle)
 		}
 	}
 }
@@ -100,7 +103,7 @@ func (b *Bag) checkBundles(bundles []string) {
 func (b *Bag) checkControllers(bundle string, controllers []string) {
 	for _, controller := range controllers {
 		if _, ok := b.actions[bundle][controller]; !ok {
-			log.Fatalf("bundle %s: func SetMiddle got error, controller %s not exist\n", bundle, controller)
+			log.Fatalf("set controller middleware got error: controller '%s' not exist in bundle '%s'\n", controller, bundle)
 		}
 	}
 }
@@ -109,9 +112,9 @@ func (b *Bag) checkActions(bundle, controller string, actions []string) {
 	for _, action := range actions {
 		if !b.actions[bundle][controller][action] {
 			if controller == "" {
-				log.Fatalf("bundle %s: provider func SetMiddle got error, action middle must set in controller\n", bundle)
+				log.Fatalf("set action middleware got error: set action '%s' in unknown controller\n", action)
 			} else {
-				log.Fatalf("%s.%s: func SetMiddle got error, action %s not exist\n", bundle, controller, action)
+				log.Fatalf("set action middleware got error: action '%s' not exist in controller '%s'\n", action, controller)
 			}
 		}
 	}
