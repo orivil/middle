@@ -1,7 +1,10 @@
 package middle
 import (
 	"log"
+	"fmt"
 )
+
+var _ = fmt.Println
 
 // the interface for middleware container, to check if middleware exist
 type MiddleChecker interface {
